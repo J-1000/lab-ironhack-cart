@@ -15,7 +15,7 @@ function calculateAll() {
   document.querySelectorAll(".product").forEach(element => {
     count += updateSubtotal(element);
   });
-  console.log(count);
+
   document.querySelector("h2 span").innerText = `${count}`;
 }
 
@@ -30,15 +30,20 @@ function deleteButton(e) {
 }
 const createButton = document.querySelector("#create");
 createButton.onclick = createProduct;
+var markusFansClub = document.querySelector("#cart > tbody > tr:nth-child(1)");
 
 function createProduct(e) {
   const npName = document.querySelector("#nName").value;
   const npPrice = document.querySelector("#nPrice").value;
-  const newProduct = document.createElement("tr");
-  const row = document.querySelector("#cart > tbody > tr:nth-child(1)");
-  console.log(row);
-  newProduct.className = "product";
+  const newProduct = markusFansClub.cloneNode(true);
+  console.log(newProduct);
+  newProduct.querySelector("td.name > span").innerHTML = npName;
+  newProduct.querySelector("td.pu > span").innerHTML = npPrice;
+  newProduct.querySelector("td.rm > button").onclick = deleteButton;
+
   $cart.appendChild(newProduct);
+  document.querySelector("#nName").value = "";
+  document.querySelector("##nPrice").value = "";
 }
 
 $calc.onclick = calculateAll;
