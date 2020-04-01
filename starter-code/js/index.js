@@ -1,3 +1,4 @@
+//iron hack cart
 const $cart = document.querySelector("#cart tbody");
 const $calc = document.getElementById("calc");
 
