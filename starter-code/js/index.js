@@ -56,7 +56,8 @@ function createProduct(e) {
 </td>
 `;
   newProduct.querySelector(".btn-delete").onclick = deleteButton;
-
+  document.querySelector("#nName").value = "";
+  document.querySelector("#nPrice").value = "";
   $cart.appendChild(newProduct);
 }
 
