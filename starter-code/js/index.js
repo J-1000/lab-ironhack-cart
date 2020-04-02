@@ -69,10 +69,11 @@ function addProduct() {
   <td class="rm">
   <button class="btn btn-delete">Delete</button>
   </td>
-  </tr>` // I know its quite a hardcode but I couldnt come up with anything else,
+  </tr>`
+  // adding the onclick event to new button
   document.querySelectorAll(".btn-delete").forEach(function (button) {
     button.onclick = deleteButton;
   });
-}; // wasted a couple hours trying to do it :((
+};
 $calc.onclick = calculateAll;
 $addP.onclick = addProduct;
