@@ -40,7 +40,8 @@ document.querySelectorAll(".btn-delete").forEach(function (button) {
 });
 
 function deleteButton(element) {
-  const deleteProduct = element.target.parentElement.parentElement;
+  const deleteProduct = element.target.parentNode.parentNode;
+  console.log($cart.deleteProduct)
   $cart.removeChild(deleteProduct);
 }
 
@@ -69,6 +70,9 @@ function addProduct() {
   <button class="btn btn-delete">Delete</button>
   </td>
   </tr>` // I know its quite a hardcode but I couldnt come up with anything else,
+  document.querySelectorAll(".btn-delete").forEach(function (button) {
+    button.onclick = deleteButton;
+  });
 }; // wasted a couple hours trying to do it :((
 $calc.onclick = calculateAll;
 $addP.onclick = addProduct;
