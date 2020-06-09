@@ -18,30 +18,38 @@
         <th>Action</th>
       </tr>
     </thead>
+
     <tbody>
-      <tr class="product">
+
+
+
+      <tr class="product"> <!-- div wrapper containin product html -->
         <td class="name">
-          <span>IronBubble-head</span>
+          <span>IronBubble-head</span> <!-- span with product name -->
         </td>
     
         <td class="pu">
-          $<span>25.00</span>
+          $<span>25.00</span> <!-- span with product cost -->
         </td>
     
         <td class="qty">
           <label>
-            <input type="number" value="0" min="0">
+            <input type="number" value="0" min="0"> <!-- input with product quantity -->
           </label>
         </td>
     
         <td class="subtot">
-          $<span>0</span>
+          $<span>0</span> <!-- span with total price -->
         </td>
     
         <td class="rm">
-          <button class="btn btn-delete">Delete</button>
+          <button class="btn btn-delete">Delete</button> <!-- button with delete function -->
         </td>
       </tr>
+
+
+
+
       <tr class="product">
         <td class="name">
           <span>Markus</span>
@@ -64,15 +72,17 @@
         <td class="rm">
           <button class="btn btn-delete">Delete</button>
         </td>
+        
       </tr>
+
     </tbody>
     <tfoot>
       <tr class="new">
         <td>
-          <input type="text"/>
+          <input id="newName" type="text"/>
         </td>
         <td>
-          <input type="number" min="0"/>
+          <input id="newPrice" type="number" min="0"/>
         </td>
         <td></td>
         <td></td>
