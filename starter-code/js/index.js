@@ -27,6 +27,7 @@ function calculateAll() {
 function removeProduct(product) {
   $cart.removeChild(product)
   $cart = document.querySelector('#cart tbody');
+  calculateAll()
 }
 
 $calc.onclick = calculateAll;
@@ -76,8 +77,6 @@ function createProduct(name, price) {
             </td>
 `
   $cart.appendChild(element)
-
-
 }
 
 function addEventListenerButtonCreateProduct() {
@@ -85,19 +84,12 @@ function addEventListenerButtonCreateProduct() {
   const productName = document.querySelector('#cart > tfoot > tr > td:nth-child(1) > input[type=text]')
   const unitPrice = document.querySelector('#cart > tfoot > tr > td:nth-child(2) > input[type=number]')
   btnAddProduct.addEventListener('click', function () {
-    console.log('click')
-    console.log(productName.value)
-    console.log(unitPrice.value)
-
     createProduct(productName.value, unitPrice.value)
     productName.value = ''
     unitPrice.value = ''
     $cart = document.querySelector('#cart tbody');
     addEventListenerEachProduct()
   })
-
-
-
 }
 addEventListenerButtonCreateProduct()
 
