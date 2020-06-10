@@ -2,9 +2,11 @@ let $cart = document.querySelector('#cart tbody');
 let $calc = document.getElementById('calc');
 
 
-let products = document.querySelectorAll(".product");
+
 function updateSubtotal() {
   // Iteration 1.1
+  let products = document.querySelectorAll(".product");
+
   products.forEach((product) => {
     let quantity = product.querySelector('input').value;
     //console.log(quantity);
@@ -21,17 +23,20 @@ document.addEventListener("input", updateSubtotal);
 
 function calculateAll() {
   // Iteration 1.2
-  updateSubtotal();
+  let subtotals = document.querySelectorAll(".subtot span");
   let total = 0;
-  for(let product in products){
-    total += +product.querySelector('.subtot span').innerText;
+
+  subtotals.forEach((subtotal) => {
+      total += +subtotal.innerText;
+      //console.log(total);
+  });
+    document.querySelector("h2 span").innerText = total;
   }
-  document.querySelector('h2 span').innerText= total;
-}
 
-
-$calc.onclick = calculateAll;
-
+  let buttonCalculatePrice = document.querySelector(".btn.btn-success");
+  buttonCalculatePrice.addEventListener("click", calculateAll);
+ 
+    
 
 
 /*
@@ -45,12 +50,5 @@ function createProduct(){
 }
 createProduct();
 
-
-$cart.addEventListener("change",function(){
-  updateSubtotal($cart.querySelectorAll(".product"))
 });
-
-
-//let CalculatePricesButton = document.getElementsById('calc');
-//console.log(CalculatePricesButton);
 */
