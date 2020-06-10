@@ -32,8 +32,8 @@ document
 //Iteration 5
 let prodTemplate = document.querySelector(".product").cloneNode(true);
 document.getElementById("create").onclick = () => {
-  let name = document.querySelector(".new > td > input[type=text]").value;
-  let price = document.querySelector(".new > td > input[type=number]").value;
+  let name = document.querySelector(".new > td > input[type=text]").value || 'Tiramisu 🤤';
+  let price = document.querySelector(".new > td > input[type=number]").value || 5;
   let newProduct = prodTemplate.cloneNode(true);
   newProduct.querySelector(".name span").innerHTML = name;
   newProduct.querySelector(".pu span").innerHTML = price;
