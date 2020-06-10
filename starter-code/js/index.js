@@ -1,8 +1,8 @@
 var $cart = document.querySelector('#cart tbody');
 var $calc = document.getElementById('calc');
 var $delButtons = document.querySelectorAll('.btn.btn-delete');
+var $create = document.querySelector('.new button');
 var $prod = document.querySelectorAll('.product');
-var $create = document.querySelector('.new button')
 
 
 // Calculate subtotals:
@@ -34,6 +34,7 @@ $calc.onclick = calculateAll;
 for (let i = 0; i < $delButtons.length; i++) {
   $delButtons[i].onclick = function removeProduct() {
     document.querySelector('tbody').removeChild($prod[i]);
+    calculateAll();
   }
 }
 
@@ -45,7 +46,11 @@ function addProduct() {
   const newTableRow = $prod[0].cloneNode(true);
   newTableRow.querySelector(".name span").innerHTML = newProductName;
   newTableRow.querySelector(".pu span").innerHTML = newProductPrice;
-  document.querySelector("tbody").appendChild(newTableRow);
+  newTableRow.querySelector("button").onclick=function(){
+    newTableRow.remove()
+  }
+  document.querySelector("tbody").appendChild(newTableRow)
+
 }
 
 $create.onclick = addProduct;
