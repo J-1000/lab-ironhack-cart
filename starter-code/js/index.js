@@ -1,21 +1,27 @@
-var cart = document.querySelector('#cart tbody');
+var $cart = document.querySelector('#cart tbody');
 var $calc = document.getElementById('calc');
+var $createButton = document.getElementById('create');
 
-
-// function updateSubtotal($product) {
-//   // Iteration 1.1
-// }
-
-// function calculateAll() {
-//   // Iteration 1.2
-// }
-// $calc.onclick = calculateAll;
 addDeleteListeners();
+$calc.onclick = calculateAll;
+$createButton.onclick = createProduct;
 
-document.getElementById('create').addEventListener('click', () => {
+function calculateAll() {
+  let priceUnit = document.querySelectorAll('.pu span');
+  let quantity = document.querySelectorAll('.qty input');
+  let subTotal = document.querySelectorAll('.subtot span');
+  let total = document.querySelector('h2 span');
+  let totalSum = 0;
+  for(let i = 0; i < priceUnit.length; i++) {
+    subTotal[i].innerText = priceUnit[i].innerText * quantity[i].value;
+    totalSum += priceUnit[i].innerText * quantity[i].value;
+  }
+  total.innerText = totalSum;
+}
+
+function createProduct() {
   let productName = document.querySelectorAll('tfoot input')[0].value;
   let productPrice = document.querySelectorAll('tfoot input')[1].value;
-  let parent = document.querySelector('tbody');
   let newElement = document.createElement('tr');
   newElement.setAttribute('class', 'product');
   newElement.innerHTML =
@@ -51,18 +57,18 @@ document.getElementById('create').addEventListener('click', () => {
         </div>
       </td>`;
 
-  parent.appendChild(newElement);
+  $cart.appendChild(newElement);
   document.querySelectorAll('tfoot input')[0].value = '';
   document.querySelectorAll('tfoot input')[1].value = '';
   addDeleteListeners();
-});
+}
 
 function addDeleteListeners() {
   let deleteButtons = document.getElementsByClassName('btn-delete');
   let individualProducts = document.querySelectorAll('tr');
   for(let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].addEventListener('click', () => {
-      cart.removeChild(individualProducts[i+1]);
+      $cart.removeChild(individualProducts[i+1]);
     });
   }
 }
