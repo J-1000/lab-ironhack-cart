@@ -1,12 +1,13 @@
 var $cart = document.querySelector('#cart tbody');
 var $calc = document.getElementById('calc');
-var $del = document.querySelectorAll('.btn.btn-delete');
+var $delButtons = document.querySelectorAll('.btn.btn-delete');
+var $prod = document.querySelectorAll('.product');
+var $create = document.querySelector('.new button')
 
 
-let products = document.querySelectorAll('.product');
+// Calculate subtotals:
 function updateSubtotal() {
-//   // Iteration 1.1
-  products.forEach(element => {
+  $prod.forEach(element => {
     let qty = (element.querySelector("input").value)
     let perUnit = +element.querySelector(".pu span").innerText;
     let subtotal = qty * perUnit;
@@ -15,12 +16,13 @@ function updateSubtotal() {
 }
 
 
+// Calculate total price:
 function calculateAll() {
-  // Iteration 1.2
   updateSubtotal()
   let total = 0;
-  products.forEach(element => {
+  $prod.forEach(element => {
     total += +element.querySelector('.subtot span').innerText;
+    console.log(total);
   });
   document.querySelector('h2 span').innerText = total;
 }
@@ -28,7 +30,22 @@ function calculateAll() {
 $calc.onclick = calculateAll;
 
 
-for (let i = 0; i < $del.length; i++) {
-  $del[i].onclick = products[i].removeChild()
-
+// Delete products:
+for (let i = 0; i < $delButtons.length; i++) {
+  $delButtons[i].onclick = function removeProduct() {
+    document.querySelector('tbody').removeChild($prod[i]);
+  }
 }
+
+// Add product:
+
+function addProduct() {
+  const newProductName = document.querySelector("tfoot input").value;
+  const newProductPrice = document.querySelectorAll("tfoot input")[1].value
+  const newTableRow = $prod[0].cloneNode(true);
+  newTableRow.querySelector(".name span").innerHTML = newProductName;
+  newTableRow.querySelector(".pu span").innerHTML = newProductPrice;
+  document.querySelector("tbody").appendChild(newTableRow);
+}
+
+$create.onclick = addProduct;
