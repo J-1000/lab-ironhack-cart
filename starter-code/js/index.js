@@ -2,19 +2,21 @@ let $cart = document.querySelector('#cart tbody');
 let $calc = document.getElementById('calc');
 
 
-let products = document.querySelectorAll('.product');
-function updateSubtotal(products) {
- // Iteration 1.1
- for(let product in products){
+let products = document.querySelectorAll(".product");
+function updateSubtotal() {
+  // Iteration 1.1
+  products.forEach((product) => {
     let quantity = product.querySelector('input').value;
     //console.log(quantity);
-    let priceUnit = +product.querySelector('.pu span').innerText;
+    let priceUnit = product.querySelector('.pu span').innerText;
     //console.log(priceUnit);
     let subtotal = quantity * priceUnit;
     //console.log(subtotal);
     product.querySelector('.subtot span').innerText = subtotal;
- }
-};
+   });
+}
+document.addEventListener("input", updateSubtotal);
+
 
 
 function calculateAll() {
