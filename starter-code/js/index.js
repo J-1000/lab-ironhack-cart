@@ -18,10 +18,43 @@ function updateAll($product) {
   }
 }
 
-// console.log(updateSubtotal());
+//Iteration 4
+function deleteButtons() {
+  let deleteButtons = document.querySelectorAll('.btn-delete');
+  for(let i=0; i < deleteButtons.length; i++) {
+    deleteButtons[i].addEventListener('click', deleteProduct)
+    }
+  }
+  
+  function deleteProduct (e) {
+    e.currentTarget.parentNode.parentNode.parentNode.removeChild(e.currentTarget.parentNode.parentNode);
+  }
 
-// function calculateAll() {
-//   // Iteration 1.2
-// }
-// $calc.onclick = calculateAll;
-
+//Iteration 5
+document.querySelector('#create').addEventListener('click', createProduct)
+function createProduct() {
+  let newProduct = document.querySelector("#cart > tbody").insertRow();
+  newProduct.classList.add('product');
+  let TDs = `
+<tr class="product">
+  <td class="name">
+    <span>Markus</span>
+  </td>
+  <td class="pu">
+    $<span>5.00</span>
+  </td>
+  <td class="qty">
+    <label>
+      <input type="number" value="0" min="0">
+    </label>
+  </td>
+  <td class="subtot">
+    $<span>0</span>
+  </td>
+  <td class="rm">
+    <button class="btn btn-delete">Delete</button>
+  </td>
+</tr>`
+newProduct.innerHTML = TDs;
+deleteButtons()
+}
