@@ -23,7 +23,6 @@ function calculateAll() {
   let total = 0;
   $prod.forEach(element => {
     total += +element.querySelector('.subtot span').innerText;
-    console.log(total);
   });
   document.querySelector('h2 span').innerText = total;
 }
