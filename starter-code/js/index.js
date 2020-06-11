@@ -7,6 +7,7 @@ var $prod = document.querySelectorAll('.product');
 
 // Calculate subtotals:
 function updateSubtotal() {
+  $prod = document.querySelectorAll('.product');
   $prod.forEach(element => {
     let qty = (element.querySelector("input").value)
     let perUnit = +element.querySelector(".pu span").innerText;
@@ -38,15 +39,15 @@ for (let i = 0; i < $delButtons.length; i++) {
   }
 }
 
-// Add product:
 
+// Add product:
 function addProduct() {
   const newProductName = document.querySelector("tfoot input").value;
   const newProductPrice = document.querySelectorAll("tfoot input")[1].value
   const newTableRow = $prod[0].cloneNode(true);
   newTableRow.querySelector(".name span").innerHTML = newProductName;
   newTableRow.querySelector(".pu span").innerHTML = newProductPrice;
-  newTableRow.querySelector("button").onclick=function(){
+  newTableRow.querySelector("button").onclick=function() {
     newTableRow.remove()
   }
   document.querySelector("tbody").appendChild(newTableRow)
